@@ -1,9 +1,8 @@
 const { useState, useEffect } = React;
-
 const App = () => {
   const [pokemonList, setPokemonList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [displayCount, setDisplayCount] = useState(6);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [displayCount, setDisplayCount] = useState(20);
 
   useEffect(() => {
     fetchPokemonList(displayCount);
@@ -19,7 +18,7 @@ const App = () => {
       const results = await Promise.all(promises);
       setPokemonList(results);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -28,7 +27,7 @@ const App = () => {
       fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`)
         .then((response) => response.json())
         .then((data) => setPokemonList([data]))
-        .catch((error) => console.error('Error fetching data:', error));
+        .catch((error) => console.error("Error fetching data:", error));
     }
   };
 
@@ -72,14 +71,12 @@ const PokemonCard = ({ pokemon }) => {
       <p>ID: {pokemon.id}</p>
       {expanded && (
         <>
+          <p>Types: {pokemon.types.map((type) => type.type.name).join(", ")}</p>
           <p>
-            Types: {pokemon.types.map((type) => type.type.name).join(', ')}
-          </p>
-          <p>
-            Stats:{' '}
+            Stats:{" "}
             {pokemon.stats
               .map((stat) => `${stat.stat.name}: ${stat.base_stat}`)
-              .join(', ')}
+              .join(", ")}
           </p>
           <p>Height: {pokemon.height}</p>
           <p>Weight: {pokemon.weight}</p>
@@ -89,4 +86,4 @@ const PokemonCard = ({ pokemon }) => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById("app"));
