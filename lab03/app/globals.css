@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: lightgoldenrodyellow;
+  color: #333;
+  margin: 0;
+}
+#menu{
+  margin: 2px;
+  border: 2px solid #333;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  width: 230px;
+  justify-content: space-evenly;
+  text-decoration: none;
+}
+#userInput {
+  flex: 1;
+  padding: 7px;
+  margin-right: 10px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+#searcher {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ccc;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 3px solid gray;
+  border-top: 0;
+  border-radius: 3px;
+}
+
+#submitButton {
+  margin: 2px 2px 2px 2px;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+#siatka {
+  display: flex;
+  width: 400px;
+  justify-content: space-evenly;
+}
+
+#wyświetlana_siatka6 {
+  margin: 2px;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+#wyświetlana_siatka12 {
+  margin: 2px;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+#wyświetlana_siatka24 {
+  margin: 2px;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555;
+}
+
+#pokemonList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.pokemon {
+  border: 2px solid black;
+  border-radius: 15%;
+  background-color: #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  margin: 100px;
+  width: 250px;
+}
+
+.pokemon img {
+  max-width: 100px;
+}
