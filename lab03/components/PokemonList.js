@@ -1,11 +1,20 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import Navigation from "./Navigation";
 
 const PokemonList = () => {
   const [pokemonList, setPokemonList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
   const [displayCount, setDisplayCount] = useState(20);
+
+  const handleSearch = (searchTerm) => {
+    if (searchTerm) {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`)
+        .then((response) => response.json())
+        .then((data) => setPokemonList([data]))
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+  };
 
   useEffect(() => {
     fetchPokemonList(displayCount);
@@ -21,25 +30,24 @@ const PokemonList = () => {
       const results = await Promise.all(promises);
       setPokemonList(results);
     } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  const handleSearch = () => {
-    if (searchTerm) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm.toLowerCase()}`)
-        .then((response) => response.json())
-        .then((data) => setPokemonList([data]))
-        .catch((error) => console.error('Error fetching data:', error));
+      console.error("Error fetching data:", error);
     }
   };
 
   return (
+    <div id="frontside">
+      <Navigation
+        searchTerm={""}
+        displayCount={fetchPokemonList}
+        handleSearch={handleSearch}
+        setDisplayCount={20}
+      ></Navigation>
       <div id="pokemonList">
         {pokemonList.map((pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
+    </div>
   );
 };
 
@@ -53,12 +61,12 @@ const PokemonCard = ({ pokemon }) => {
       <p>ID: {pokemon.id}</p>
       {expanded && (
         <>
-          <p>Types: {pokemon.types.map((type) => type.type.name).join(', ')}</p>
+          <p>Types: {pokemon.types.map((type) => type.type.name).join(", ")}</p>
           <p>
-            Stats:{' '}
+            Stats:{" "}
             {pokemon.stats
               .map((stat) => `${stat.stat.name}: ${stat.base_stat}`)
-              .join(', ')}
+              .join(", ")}
           </p>
           <p>Height: {pokemon.height}</p>
           <p>Weight: {pokemon.weight}</p>
