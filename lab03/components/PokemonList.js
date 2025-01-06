@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
+import PokemonCard from "./PokemonCard";
 
 const PokemonList = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -51,30 +52,5 @@ const PokemonList = () => {
   );
 };
 
-const PokemonCard = ({ pokemon }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <div className="pokemon" onClick={() => setExpanded(!expanded)}>
-      <div id="fav">Dodaj do ulubionych</div>
-      <h3>{pokemon.name}</h3>
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-      <p>ID: {pokemon.id}</p>
-      {expanded && (
-        <>
-          <p>Types: {pokemon.types.map((type) => type.type.name).join(", ")}</p>
-          <p>
-            Stats:{" "}
-            {pokemon.stats
-              .map((stat) => `${stat.stat.name}: ${stat.base_stat}`)
-              .join(", ")}
-          </p>
-          <p>Height: {pokemon.height}</p>
-          <p>Weight: {pokemon.weight}</p>
-        </>
-      )}
-    </div>
-  );
-};
 
 export default PokemonList;

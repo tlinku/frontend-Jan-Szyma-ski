@@ -20,7 +20,6 @@ const Navigation = ({
         <div id="searcher">
           <div id="menu">
             <Link href="/">Home</Link>
-            <Link href="/pokemon">Pokemon</Link>
             <Link href="/favorites">Favorites</Link>
           </div>
           <div id="main_search">
