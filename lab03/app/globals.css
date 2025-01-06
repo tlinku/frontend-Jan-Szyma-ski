@@ -97,3 +97,20 @@ button:hover {
 .pokemon img {
   max-width: 100px;
 }
+#fav {
+  margin-left: 150px;
+  vertical-align: middle;
+  text-align: center;
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 100%;
+  font-size: 10px;
+}
+#fav:hover {
+  background-color: #555;
+  color: white;
+}
+#fav: oncli;

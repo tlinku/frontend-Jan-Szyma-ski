@@ -24,7 +24,11 @@ const Navigation = ({
             <Link href="/favorites">Favorites</Link>
           </div>
           <div id="main_search">
-            <input ref={searchInputRef} placeholder="podaj nazwę pokemona" />
+            <input
+              id="userInput"
+              ref={searchInputRef}
+              placeholder="podaj nazwę pokemona"
+            />
             <button id="submitButton" onClick={doSearch}>
               Wyszukaj
             </button>

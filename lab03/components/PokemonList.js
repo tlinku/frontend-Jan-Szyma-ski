@@ -56,6 +56,7 @@ const PokemonCard = ({ pokemon }) => {
 
   return (
     <div className="pokemon" onClick={() => setExpanded(!expanded)}>
+      <div id="fav">Dodaj do ulubionych</div>
       <h3>{pokemon.name}</h3>
       <img src={pokemon.sprites.front_default} alt={pokemon.name} />
       <p>ID: {pokemon.id}</p>
