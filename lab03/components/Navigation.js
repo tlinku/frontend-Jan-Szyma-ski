@@ -2,11 +2,12 @@
 import React from "react";
 import Link from "next/link";
 import { useRef } from "react";
+
 const Navigation = ({
-  displayCount,
-  searchTerm,
+  setDisplayCount,  // Changed from displayCount
   handleSearch,
-  setDisplayCount,
+  displayType,
+  setdisplayType
 }) => {
   const searchInputRef = useRef();
 
@@ -33,15 +34,9 @@ const Navigation = ({
             </button>
           </div>
           <div id="siatka">
-            <button id="wyświetlana_siatka6" onClick={() => displayCount(6)}>
-              Wyświetl 6
-            </button>
-            <button id="wyświetlana_siatka12" onClick={() => displayCount(12)}>
-              Wyświetl 12
-            </button>
-            <button id="wyświetlana_siatka24" onClick={() => displayCount(24)}>
-              Wyświetl 24
-            </button>
+            <button id="wyświetlana_siatka6" onClick={() => setDisplayCount(6)}>Wyświetl 6</button>
+            <button id ="wyświetlana_siatka12" onClick={() => setDisplayCount(12)}>Wyświetl 12</button>
+            <button id="wyświetlana_siatka24" onClick={() => setDisplayCount(24)}>Wyświetl 24</button>
           </div>
         </div>
       </nav>
