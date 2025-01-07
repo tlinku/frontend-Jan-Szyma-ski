@@ -99,15 +99,15 @@ button:hover {
 }
 #fav {
   margin-left: 150px;
-  vertical-align: middle;
   text-align: center;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   padding: 10px;
+
   background-color: white;
   border: 2px solid black;
   border-radius: 100%;
-  font-size: 10px;
+  font-size: 20px;
   cursor: pointer;
 }
 #fav:hover {
@@ -118,4 +118,15 @@ button:hover {
 #fav:active {
   background-color: black;
   color: white;
+}
+#favhead {
+  text-align: center;
+}
+#filterDiv {
+  background-color: #ccc;
+  border: 1px solid #555;
+  border-radius: 10px;
+  width: 80px;
+  height: 60px;
+  text-align: center;
 }
