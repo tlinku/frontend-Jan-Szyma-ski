@@ -1,0 +1,10 @@
+#pokemonList {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#comphead {
+    text-align: center;
+    font-weight: bold;
+}

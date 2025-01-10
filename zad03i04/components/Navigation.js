@@ -8,6 +8,7 @@ const Navigation = ({
   handleSearch,
   displayType,
   setdisplayType,
+  isComparison
 }) => {
   const searchInputRef = useRef();
 
@@ -22,7 +23,9 @@ const Navigation = ({
           <div id="menu">
             <Link href="/">Home</Link>
             <Link href="/favorites">Favorites</Link>
+            <Link href="/comparison">Compare</Link>
           </div>
+          {!isComparison && (
           <div id="main_search">
             <input
               id="userInput"
@@ -33,6 +36,8 @@ const Navigation = ({
               Wyszukaj
             </button>
           </div>
+          )}
+          {!isComparison && (
           <div id="siatka">
             <button id="wyświetlana_siatka6" onClick={() => setDisplayCount(6)}>
               Wyświetl 6
@@ -50,6 +55,7 @@ const Navigation = ({
               Wyświetl 24
             </button>
           </div>
+            )}
         </div>
       </nav>
     </header>

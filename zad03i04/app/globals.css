@@ -85,13 +85,13 @@ button:hover {
 
 .pokemon {
   border: 2px solid black;
-  border-radius: 15%;
+  border-radius: 6%;
   background-color: #ccc;
   padding: 10px;
   margin: 10px;
   text-align: center;
   margin: 100px;
-  width: 250px;
+  width: 300px;
 }
 
 .pokemon img {
@@ -166,4 +166,24 @@ button:hover {
 #specialbuttons {
   display: flex;
   justify-content: space-evenly;
+}
+#comp {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 30%;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+#comp:hover {
+  background-color: #555;
+  color: white;
+}
+#comp:active {
+  background-color: black;
+  color: white;
 }

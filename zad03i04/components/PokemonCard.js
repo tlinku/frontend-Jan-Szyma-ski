@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, usePathname } from "next/navigation";
 
-const PokemonCard = ({ pokemon }) => {
-  const [expanded, setExpanded] = useState(false);
+const PokemonCard = ({ pokemon, isComparison = false }) => {
+  const [expanded, setExpanded] = useState(isComparison ? true : false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isCompared, setIsCompared] = useState(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
@@ -14,6 +15,12 @@ const PokemonCard = ({ pokemon }) => {
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     if (favorites.includes(pokemon.id)) {
       setIsFavorite(true);
+    }
+  }, [pokemon.id]);
+  useEffect(() => {
+    const comparison = JSON.parse(localStorage.getItem("comparison")) || [];
+    if (comparison.includes(pokemon.id)) {
+      setIsCompared(true);
     }
   }, [pokemon.id]);
 
@@ -30,6 +37,24 @@ const PokemonCard = ({ pokemon }) => {
     }
     setIsFavorite(!isFavorite);
   };
+  const toggleComparison = () => {
+    const comparison = JSON.parse(localStorage.getItem("comparison")) || [];
+    console.log(comparison);
+
+    if (isCompared) {
+      const newComparison = comparison.filter((id) => id !== pokemon.id);
+      localStorage.setItem("comparison", JSON.stringify(newComparison));
+      } 
+    else {
+      if (comparison.length < 2) {
+      comparison.push(pokemon.id);
+      localStorage.setItem("comparison", JSON.stringify(comparison));
+      } else {
+          alert("You must compare two pokemons");
+        }
+    }
+    setIsCompared(!isCompared);
+   };
 
   const navigateToPokemonPage = (e) => {
     e.stopPropagation();
@@ -37,10 +62,20 @@ const PokemonCard = ({ pokemon }) => {
   };
 
   return (
-    <div className="pokemon" onClick={() => setExpanded(!expanded)}>
+    <div className="pokemon" onClick={() => !isComparison && setExpanded(!expanded)}>
       <div id="specialbuttons">
         <div id="displayInAnother" onClick={navigateToPokemonPage}>
           INFO
+        </div>
+        <div
+          id="comp"
+          className={isCompared ? "compared" : ""}
+          onClick={(e) => {
+            toggleComparison();
+            e.stopPropagation();
+          }}
+        >
+          {isCompared ? "Porównane" : "Porównaj"}
         </div>
         <div
           id="fav"
@@ -52,6 +87,7 @@ const PokemonCard = ({ pokemon }) => {
         >
           {isFavorite ? "❤️" : "🤍"}
         </div>
+        
       </div>
       <h3>{pokemon.name}</h3>
       <img src={pokemon.sprites.front_default} alt={pokemon.name} />
