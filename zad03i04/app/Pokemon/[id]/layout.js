@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import Navigation from "../../../components/Navigation";
 
 export default function PokemonDetailsLayout({ children }) {
   return (
     <div>
-      <div>Details</div>
+      <Navigation />
       <div>{children}</div>
     </div>
   );

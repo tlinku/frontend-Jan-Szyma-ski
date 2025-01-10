@@ -98,7 +98,7 @@ button:hover {
   max-width: 100px;
 }
 #fav {
-  margin-left: 150px;
+  /* margin-left: 150px; */
   text-align: center;
   width: 30px;
   height: 30px;
@@ -129,4 +129,41 @@ button:hover {
   width: 80px;
   height: 60px;
   text-align: center;
+}
+#details {
+  width: 500px;
+  height: 500px;
+  background-color: whitesmoke;
+  border: 3px solid gray;
+  border-radius: 10px;
+  margin-top: 100px;
+}
+#upper {
+  display: flex;
+  justify-content: center;
+}
+#displayInAnother {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 100%;
+  font-size: 20px;
+  cursor: pointer;
+  font-size: 75%;
+}
+#displayInAnother:hover {
+  background-color: #555;
+  color: white;
+}
+
+#displayInAnother:active {
+  background-color: black;
+  color: white;
+}
+#specialbuttons {
+  display: flex;
+  justify-content: space-evenly;
 }
